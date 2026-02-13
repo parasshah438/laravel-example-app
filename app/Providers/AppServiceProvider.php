@@ -11,7 +11,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Register Resume Parser Service
+        $this->app->singleton(\App\Services\ResumeParserService::class);
     }
 
     /**

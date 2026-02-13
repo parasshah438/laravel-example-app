@@ -21,6 +21,11 @@ Route::get('/my-activity', function () {
     return view('user-activity', compact('activities'));
 })->middleware('auth')->name('user.activity');
 
+// Resume Parser Routes
+Route::get('/resume-parser', [App\Http\Controllers\ResumeController::class, 'index'])->name('resume.index');
+Route::post('/resume-upload', [App\Http\Controllers\ResumeController::class, 'upload'])->name('resume.upload');
+Route::post('/resume-save', [App\Http\Controllers\ResumeController::class, 'save'])->name('resume.save');
+
 // API routes for session management (need web middleware for CSRF and sessions)
 Route::prefix('api')->middleware('web')->group(function () {
     Route::post('/heartbeat', [App\Http\Controllers\Api\SessionController::class, 'heartbeat']);
